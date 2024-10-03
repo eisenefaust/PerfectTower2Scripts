@@ -1,5 +1,5 @@
 :import IronClick_lib
-:name {package(Point&Mouse (P))}
+:name {package(main (P))}
 
 :global int click_instances
 
@@ -10,8 +10,8 @@ key.p()
 ; https://github.com/d0sboots/PerfectTower/blob/main/D0S.SuperClick
 
 click_instances = click_instances + 1
-execute(if(click_instances < 54, "{package(Point&Mouse (P))}", "{package(Null)}"))
-execute(if(click_instances < 54, "{package(Point&Mouse (P))}", "{package(Null)}"))
+execute(if(click_instances < 54, "{package(main (P))}", "{package(Null)}"))
+execute(if(click_instances < 54, "{package(main (P))}", "{package(Null)}"))
 
 ; It's important to keep this loop tight, so we get as many clicks/frame
 ; as possible.

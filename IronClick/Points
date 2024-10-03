@@ -13,12 +13,14 @@ Era = {Era}
 
 ;define logic for traversing the points defined in the lib
 gotoif(f_construction, \
-    max(x(Point), y(Point)) == 0.0 || \
-	x(Point) == x(Era) && y(Point) == y(Era)\
+    max(x(Point), y(Point)) == 0.0
     )
 gotoif(f_era, \
 	x(Point) == x(Construction) && y(Point) == y(Construction) \
     )
+gotoif(f_reset, \
+    x(Point) == x(Era) && y(Point) == y(Era) \
+)
 
 ;handle each endpoint, consider converting this to a macro
 f_construction:
@@ -29,3 +31,8 @@ goto(99)
 f_era:
 Point = {Era}
 P = "Era"
+goto(99)
+
+f_reset:
+Point = (0.0, 0.0)
+P = ""
