@@ -1,6 +1,7 @@
+:import IronLagSaver_lib
+:name {package(main)}
+
 :local vector Pause
-:global double Threshold
-:global string LagSaver
 
 wakeup()
 game.newround()

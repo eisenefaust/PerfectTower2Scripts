@@ -1,0 +1,4 @@
+#package(name) IronLagSaver:{name}
+
+:global double Threshold
+:global string LagSaver

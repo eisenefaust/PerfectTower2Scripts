@@ -1,4 +1,5 @@
-:global string LagSaver
+:import IronLagSaver_lib
+:name {package(Toggle)}
 
 key.k()
 
