@@ -1,0 +1,23 @@
+:local vector Pause
+:global double Threshold
+:global string LagSaver
+
+wakeup()
+game.newround()
+
+isTowerTesting()
+
+LagSaver = "Press k to stop"
+gotoif(4, Threshold != 0.0)
+Threshold = 180.0
+#Pause {pos.relative(775.0/800.0, 430.0/450.0, 1.0, 1.0)}
+Pause = {Pause}
+gotoif(7, time.scale() != 0.0)
+click(Pause)
+waituntil((1.0 / time.unscaled()) < Threshold)
+click(Pause)
+wait(0.1)
+waituntil((1.0 / time.unscaled()) >= Threshold)
+click(Pause)
+gotoif(7, health(false) != 0.0)
+gu("LagSaver")
