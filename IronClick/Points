@@ -13,7 +13,7 @@ Era = {Era}
 
 ;define logic for traversing the points defined in the lib
 gotoif(f_construction, \
-    max(x(Point), y(Point)) == 0.0
+    max(x(Point), y(Point)) == 0.0 \
     )
 gotoif(f_era, \
 	x(Point) == x(Construction) && y(Point) == y(Construction) \
@@ -34,5 +34,5 @@ P = "Era"
 goto(99)
 
 f_reset:
-Point = (0.0, 0.0)
+Point = vec(0.0, 0.0)
 P = ""
