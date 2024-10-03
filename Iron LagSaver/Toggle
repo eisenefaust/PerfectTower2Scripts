@@ -1,0 +1,12 @@
+:global string LagSaver
+
+key.k()
+
+gotoif(4, LagSaver == "")
+gotoif(7, LagSaver == "Press k to stop")
+goto(7)
+LagSaver = "Press k to stop"
+execute("IronLagSaver:main")
+goto(99)
+gu("LagSaver")
+stop("IronLagSaver:main")
