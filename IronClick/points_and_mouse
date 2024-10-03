@@ -1,0 +1,31 @@
+:import IronClick_lib
+:name {package(Point&Mouse (P))}
+
+:global int click_instances
+
+key.p()
+
+; a modification of D0S.Superclick
+; D0S.Superclick link
+; https://github.com/d0sboots/PerfectTower/blob/main/D0S.SuperClick
+
+click_instances = click_instances + 1
+execute(if(click_instances < 54, "{package(Point&Mouse (P))}", "{package(Null)}"))
+execute(if(click_instances < 54, "{package(Point&Mouse (P))}", "{package(Null)}"))
+
+; It's important to keep this loop tight, so we get as many clicks/frame
+; as possible.
+loop:
+click(position())
+click(Point)
+gotoif(loop, click_instances <= 54)
+
+; The exit check. We count the number of copies exiting (with
+; the same counter), so we know when they've all exited.
+; This is because it takes the script that was launched via impulse
+; (the one that signals we should quit) longer to reach this point,
+; and we don't want to unset the variable prematurely or that copy
+; won't exit.
+
+click_instances = click_instances + 1
+global.unset(if(click_instances > 109, "click_instances", ""))
