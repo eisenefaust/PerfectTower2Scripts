@@ -1,38 +1,17 @@
 :import IronClick_lib
 :name {package(Points (L))}
 
-:local vector Construction
-:local vector Era
-:global string P
-
 key.l()
 
-;define local variables
-Construction = {Construction}
-Era = {Era}
-
 ;define logic for traversing the points defined in the lib
-gotoif(f_construction, \
+gotoif(f_set, \
     max(x(Point), y(Point)) == 0.0 \
     )
-gotoif(f_era, \
-	x(Point) == x(Construction) && y(Point) == y(Construction) \
-    )
-gotoif(f_reset, \
-    x(Point) == x(Era) && y(Point) == y(Era) \
-)
 
 ;handle each endpoint, consider converting this to a macro
-f_construction:
-Point = {Construction}
-P = "Construction"
-goto(99)
-
-f_era:
-Point = {Era}
-P = "Era"
-goto(99)
-
 f_reset:
 Point = vec(0.0, 0.0)
-P = ""
+goto(99)
+
+f_set:
+Point = position()
