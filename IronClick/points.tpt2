@@ -1,6 +1,8 @@
 :import IronClick_lib
 :name {package(Points (L))}
 
+:global string P
+
 key.l()
 
 ;define logic for traversing the points defined in the lib
@@ -11,7 +13,9 @@ gotoif(f_set, \
 ;handle each endpoint, consider converting this to a macro
 f_reset:
 Point = vec(0.0, 0.0)
+P = ""
 goto(99)
 
 f_set:
 Point = position()
+P = "Active"
