@@ -1,3 +1,4 @@
 #package(name) IronClick:{name}
 
 :global vector Point
+:global int mouse_click

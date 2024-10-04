@@ -1,0 +1,6 @@
+:import IronClick_lib
+:name {package(Mouse (K))}
+
+key.k()
+
+mouse_click = (mouse_click + 1) % 2
