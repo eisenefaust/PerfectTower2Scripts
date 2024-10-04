@@ -1,9 +1,6 @@
 :import IronClick_lib
-:name {package(Points (L))}
+:name {package(Mouse (M))}
 
-:global string P
+key.m()
 
-key.l()
-
-;define logic for traversing the points defined in the lib
-Point = if(max(x(Point), y(Point)) == 0.0, position(), vec(0.0, 0.0))
+M = if(M == "", "Active", "")
