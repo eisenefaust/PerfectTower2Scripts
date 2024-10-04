@@ -1,21 +1,6 @@
 :import IronClick_lib
-:name {package(Points (L))}
+:name {package(Mouse (K))}
 
-:global string P
+key.k()
 
-key.l()
-
-;define logic for traversing the points defined in the lib
-gotoif(f_set, \
-    max(x(Point), y(Point)) == 0.0 \
-    )
-
-;handle each endpoint, consider converting this to a macro
-f_reset:
-Point = vec(0.0, 0.0)
-P = ""
-goto(99)
-
-f_set:
-Point = position()
-P = "Active"
+M = if(M == "", "Active", "")

@@ -2,7 +2,6 @@
 :name {package(main (P))}
 
 :global int click_instances
-:global string M
 
 key.p()
 
@@ -17,8 +16,7 @@ execute(if(click_instances < 54, "{package(main (P))}", "{package(Null)}"))
 ; It's important to keep this loop tight, so we get as many clicks/frame
 ; as possible.
 loop:
-M = if(mouse_click == 0, "Active", "")
-gotoif(point_check, mouse_click != 0)
+gotoif(point_check, M != "Active")
 mouse:
 click(position())
 point_check:
