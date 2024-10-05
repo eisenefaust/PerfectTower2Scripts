@@ -1,17 +1,24 @@
-:import IronClick_lib
+#package(name) IronClick:{name}
 :name {package(main)}
 
 :global int click_instances
 :global vector Point
-:global string M
+:global bool M
 
 key.p()
 key.l()
 key.m()
 
-gotoif(superclick, contains(impulse(), "{package(main)}") || contains(impulse(), "key.p"))
-gotoif(mouse_toggle, contains(impulse(), "key.p"))
-gotoif(point_toggle, contains(impulse(), "key.p"))
+; toggle mouse position clicking, default is off
+mouse_toggle:
+M = M != contains(impulse(), "key.m")
+
+goto(if(contains("{package(main)}|key.p", impulse()), \
+  superclick, \
+  if(contains(impulse(), "key.l"), \
+    point_toggle, \
+    end) \
+))
 
 superclick:
 ; a modification of D0S.Superclick
@@ -28,13 +35,13 @@ superclick:
 ; too close to the limit of 100.
 
 click_instances = click_instances + 1
-execute(if(click_instances < 54, "{package(main (P))}", "{package(Null)}"))
-execute(if(click_instances < 54, "{package(main (P))}", "{package(Null)}"))
+execute(if(click_instances < 54, "{package(main)}", "{package(Null)}"))
+execute(if(click_instances < 54, "{package(main)}", "{package(Null)}"))
 
 ; It's important to keep this loop tight, so we get as many clicks/frame
 ; as possible.
 loop:
-click(if(M == "Active", position(), vec(-1000.0, -1000.0)))
+click(if(M, position(), vec(-1000.0, -1000.0)))
 click(Point)
 loop_end:
 gotoif(loop, click_instances <= 54)
@@ -52,14 +59,8 @@ global.unset(if((click_instances > 109) && (max(x(Point), y(Point)) == -1000.0),
 global.unset(if(click_instances > 109, "click_instances", ""))
 goto(end)
 
-; toggle mouse position clicking, default is off
-mouse_toggle:
-M = if(M == "", "Active", "")
-goto(end)
-
 ; toggle mouse position storage for clicking, default is off
 point_toggle:
 Point = if(max(x(Point), y(Point)) == 0.0, position(), vec(-1000.0, -1000.0))
-goto(end)
 
 end:
