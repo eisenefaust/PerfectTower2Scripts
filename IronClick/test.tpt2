@@ -35,8 +35,8 @@ superclick:
 ; too close to the limit of 100.
 
 click_instances = click_instances + 1
-execute(if(click_instances < 54, "{package(main)}", "{package(Null)}"))
-execute(if(click_instances < 54, "{package(main)}", "{package(Null)}"))
+execute(if(click_instances < 37, "{package(main)}", "{package(Null)}"))
+execute(if(click_instances < 37, "{package(main)}", "{package(Null)}"))
 
 ; It's important to keep this loop tight, so we get as many clicks/frame
 ; as possible.
@@ -44,7 +44,7 @@ loop:
 click(if(M, position(), vec(-1000.0, -1000.0)))
 click(Point)
 loop_end:
-gotoif(loop, click_instances <= 54)
+gotoif(loop, click_instances <= 58)
 
 ; The exit check. We count the number of copies exiting (with
 ; the same counter), so we know when they've all exited.
@@ -55,12 +55,12 @@ gotoif(loop, click_instances <= 54)
 
 click_instances = click_instances + 1
 ; only unset Point if it's not set to a value and you are exiting the superclick, otherwise you may be setting it up for a superclick run.
-global.unset(if((click_instances > 109) && (max(x(Point), y(Point)) == -1000.0), "Point", ""))
-global.unset(if(click_instances > 109, "click_instances", ""))
+global.unset(if((click_instances > 117) && (max(x(Point), y(Point)) == -1000.0), "Point", ""))
+global.unset(if(click_instances > 117, "click_instances", ""))
 goto(end)
 
 ; toggle mouse position storage for clicking, default is off
 point_toggle:
-Point = if(max(x(Point), y(Point)) == 0.0, position(), vec(-1000.0, -1000.0))
+Point = if(max(x(Point), y(Point)) <= 0.0, position(), vec(-1000.0, -1000.0))
 
 end:
