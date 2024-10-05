@@ -1,6 +1,0 @@
-:import IronClick_lib
-:name {package(Mouse (M))}
-
-key.m()
-
-M = if(M == "", "Active", "")

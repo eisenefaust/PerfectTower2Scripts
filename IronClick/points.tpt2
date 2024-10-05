@@ -1,9 +1,0 @@
-:import IronClick_lib
-:name {package(Points (L))}
-
-:global string P
-
-key.l()
-
-;define logic for traversing the points defined in the lib
-Point = if(max(x(Point), y(Point)) == 0.0, position(), vec(0.0, 0.0))

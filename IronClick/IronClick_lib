@@ -1,4 +1,0 @@
-#package(name) IronClick:{name}
-
-:global vector Point
-:global string M
